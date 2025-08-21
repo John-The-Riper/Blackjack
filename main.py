@@ -12,16 +12,22 @@ RED = (255, 0, 0)
 BLUE = (0, 0, 255)
 GRAY = (128, 128, 128)
 
-# Game variables and functions
+# Game variables
+player_hand = 0
+
+# Functions
+def player_hit():
+    global player_hand
+    player_hand += 1
+    print(player_hand)
+
 def screen_settings():
     screen = pygame.display.set_mode((475, 475))
     pygame.display.set_caption("Blackjack")
-    screen.fill((GREEN))
+    screen.fill(GREEN)
     pygame.display.flip()
     return screen
 
-
-# Start game has the while loop that runs the game
 def start_game():
     running = True
     screen_settings()
@@ -29,22 +35,13 @@ def start_game():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            if event.type == pygame.KEYDOWN:
+            elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     running = False
-            elif event.type == pygame.K_1:
-                player_hit()
+                elif event.key == pygame.K_1:
+                    player_hit()
     pygame.quit()
+    sys.exit()
 
-
+# Start the game loop
 start_game()
-player_hand = 0
-
-def player_hit():
-    global player_hand
-    player_hand += 1
-    new_value = player_hand
-    return new_value
-
-print(player_hand)
-sys.exit()
