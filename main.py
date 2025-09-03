@@ -1,8 +1,7 @@
-
 import pygame
 import json
 from card import Card
-from blackjack import Blackjack
+
 
 SCREEN_HEIGHT = 720
 SCREEN_WIDTH = 1280
@@ -32,9 +31,6 @@ def main():
     # For each item in the list, create a card object and append it to our list of cards.
     for entry in json_card_list:
         cards.append(Card(entry["name"], entry["path"], entry["value"], entry["suit"]))
-
-    #############################################
-
 
 
     ##############################################
