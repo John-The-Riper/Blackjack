@@ -1,6 +1,8 @@
 import pygame
 import json
 from card import Card
+from person import Person
+from blackjack import Blackjack
 
 
 SCREEN_HEIGHT = 720
@@ -32,17 +34,29 @@ def main():
     for entry in json_card_list:
         cards.append(Card(entry["name"], entry["path"], entry["value"], entry["suit"]))
 
+    ##############################################
+    # Game Setup
+    ##############################################
+    player = Person(100)
+    game = Blackjack(cards, player)
+
 
     ##############################################
     # Game loop
     ##############################################
     while running:
-        # Event loop
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-                pygame.quit()
-
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    running = False
+                elif event.key == pygame.K_1 and allow_press_1:
+                    player_action('hit')
+                elif event.key == pygame.K_2 and allow_press_2:
+                    player_action('stand')
+                    allow_press_1 = False
+                    allow_press_2 = False
 
         # Update the screen with the active surface
         pygame.display.flip()

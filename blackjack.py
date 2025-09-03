@@ -1,17 +1,19 @@
 import pygame
 
 class Blackjack:
-    def _init_(self, deck):
+    def _init_(self, deck, player):
         self.perm_deck = deck
         self.deck = deck
+        self.player = player
 
     def draw(self):
         if len(self.deck) > 0:
-            self.deck.pop()
+            return self.deck.pop()
 
         else:
             self.reset()
             self.shuffle(2)
+            return self.deck.pop()
 
     def reset(self):
         self.deck = self.perm_deck
@@ -25,3 +27,6 @@ class Blackjack:
                 temp.append(lstack[i])
                 temp.append(rstack[i])
             self.deck = temp
+
+    def run(self):
+        self.player.add_cards(self.draw())
