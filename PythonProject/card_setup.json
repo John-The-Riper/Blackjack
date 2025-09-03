@@ -1,0 +1,301 @@
+[
+  {
+    "name": "2_of_clubs",
+    "path": "./cards/2_of_clubs",
+    "value": 2,
+    "suit": "clubs"
+  },
+  {
+    "name": "2_of_diamonds",
+    "path": "./cards/2_of_diamonds",
+    "value": 2,
+    "suit": "diamonds"
+  },
+  {
+  "name": "2_of_hearts",
+  "path": "./cards/2_of_hearts",
+  "value": 2,
+  "suit": "hearts"
+  },
+  {
+  "name": "2_of_spades",
+  "path": "./cards/2_of_spades",
+  "value": 2,
+  "suit": "spades"
+  },
+
+  {
+    "name": "3_of_clubs",
+    "path": "./cards/3_of_clubs",
+    "value": 3,
+    "suit": "clubs"
+  },
+  {
+    "name": "3_of_diamonds",
+    "path": "./cards/3_of_diamonds",
+    "value": 3,
+    "suit": "diamonds"
+  },
+  {
+  "name": "3_of_hearts",
+  "path": "./cards/3_of_hearts",
+  "value": 3,
+  "suit": "hearts"
+  },
+
+  {
+    "name": "4_of_clubs",
+    "path": "./cards/4_of_clubs",
+    "value": 4,
+    "suit": "clubs"
+  },
+  {
+    "name": "4_of_diamonds",
+    "path": "./cards/2_of_diamonds",
+    "value": 4,
+    "suit": "diamonds"
+  },
+  {
+  "name": "4_of_hearts",
+  "path": "./cards/4_of_hearts",
+  "value": 4,
+  "suit": "hearts"
+  },
+  {
+  "name": "4_of_spades",
+  "path": "./cards/4_of_spades",
+  "value": 4,
+  "suit": "spades"
+  },
+  {
+  "name": "4_of_spades",
+  "path": "./cards/4_of_spades",
+  "value": 4,
+  "suit": "spades"
+  },
+
+  {
+    "name": "5_of_clubs",
+    "path": "./cards/5_of_clubs",
+    "value": 5,
+    "suit": "clubs"
+  },
+  {
+    "name": "5_of_diamonds",
+    "path": "./cards/5_of_diamonds",
+    "value": 5,
+    "suit": "diamonds"
+  },
+  {
+  "name": "5_of_hearts",
+  "path": "./cards/5_of_hearts",
+  "value": 5,
+  "suit": "hearts"
+  },
+  {
+  "name": "5_of_spades",
+  "path": "./cards/5_of_spades",
+  "value": 5,
+  "suit": "spades"
+  },
+
+  {
+    "name": "6_of_clubs",
+    "path": "./cards/6_of_clubs",
+    "value": 6,
+    "suit": "clubs"
+  },
+  {
+    "name": "6_of_diamonds",
+    "path": "./cards/6_of_diamonds",
+    "value": 6,
+    "suit": "diamonds"
+  },
+  {
+  "name": "6_of_hearts",
+  "path": "./cards/6_of_hearts",
+  "value": 6,
+  "suit": "hearts"
+  },
+  {
+  "name": "6_of_spades",
+  "path": "./cards/6_of_spades",
+  "value": 6,
+  "suit": "spades"
+  },
+
+  {
+    "name": "7_of_clubs",
+    "path": "./cards/7_of_clubs",
+    "value": 7,
+    "suit": "clubs"
+  },
+  {
+    "name": "7_of_diamonds",
+    "path": "./cards/7_of_diamonds",
+    "value": 7,
+    "suit": "diamonds"
+  },
+  {
+  "name": "7_of_hearts",
+  "path": "./cards/7_of_hearts",
+  "value": 7,
+  "suit": "hearts"
+  },
+  {
+  "name": "7_of_spades",
+  "path": "./cards/7_of_spades",
+  "value": 7,
+  "suit": "spades"
+  },
+
+  {
+    "name": "8_of_clubs",
+    "path": "./cards/8_of_clubs",
+    "value": 8,
+    "suit": "clubs"
+  },
+  {
+    "name": "8_of_diamonds",
+    "path": "./cards/8_of_diamonds",
+    "value": 8,
+    "suit": "diamonds"
+  },
+  {
+  "name": "8_of_hearts",
+  "path": "./cards/8_of_hearts",
+  "value": 8,
+  "suit": "hearts"
+  },
+  {
+  "name": "9_of_spades",
+  "path": "./cards/9_of_spades",
+  "value": 9,
+  "suit": "spades"
+  },
+
+  {
+    "name": "10_of_clubs",
+    "path": "./cards/10_of_clubs",
+    "value": 10,
+    "suit": "clubs"
+  },
+  {
+    "name": "10_of_diamonds",
+    "path": "./cards/10_of_diamonds",
+    "value": 10,
+    "suit": "diamonds"
+  },
+  {
+  "name": "10_of_hearts",
+  "path": "./cards/10_of_hearts",
+  "value": 10,
+  "suit": "hearts"
+  },
+  {
+  "name": "10_of_spades",
+  "path": "./cards/10_of_spades",
+  "value": 10,
+  "suit": "spades"
+  },
+
+  {
+    "name": "ace_of_clubs",
+    "path": "./cards/ace_of_clubs",
+    "value": 11,
+    "suit": "clubs"
+  },
+  {
+    "name": "ace_of_diamonds",
+    "path": "./cards/ace_of_diamonds",
+    "value": 11,
+    "suit": "diamonds"
+  },
+  {
+  "name": "ace_of_hearts",
+  "path": "./cards/ace_of_hearts",
+  "value": 11,
+  "suit": "hearts"
+  },
+  {
+  "name": "ace_of_spades",
+  "path": "./cards/ace_of_spades",
+  "value": 11,
+  "suit": "spades"
+  },
+
+  {
+    "name": "jack_of_clubs",
+    "path": "./cards/jack_of_clubs",
+    "value": 10,
+    "suit": "clubs"
+  },
+  {
+    "name": "jack_of_diamonds",
+    "path": "./cards/jack_of_diamonds",
+    "value": 10,
+    "suit": "diamonds"
+  },
+  {
+  "name": "jack_of_hearts",
+  "path": "./cards/jack_of_hearts",
+  "value": 10,
+  "suit": "hearts"
+  },
+  {
+  "name": "jack_of_spades",
+  "path": "./cards/jack_of_spades",
+  "value": 10,
+  "suit": "spades"
+  },
+
+  {
+    "name": "queen_of_clubs",
+    "path": "./cards/queen_of_clubs",
+    "value": 10,
+    "suit": "clubs"
+  },
+  {
+    "name": "queen_of_diamonds",
+    "path": "./cards/queen_of_diamonds",
+    "value": 10,
+    "suit": "diamonds"
+  },
+  {
+  "name": "queen_of_hearts",
+  "path": "./cards/queen_of_hearts",
+  "value": 10,
+  "suit": "hearts"
+  },
+  {
+  "name": "queen_of_spades",
+  "path": "./cards/queen_of_spades",
+  "value": 10,
+  "suit": "spades"
+  },
+
+  {
+    "name": "king_of_clubs",
+    "path": "./cards/king_of_clubs",
+    "value": 10,
+    "suit": "clubs"
+  },
+  {
+    "name": "king_of_diamonds",
+    "path": "./cards/king_of_diamonds",
+    "value": 10,
+    "suit": "diamonds"
+  },
+  {
+  "name": "king_of_hearts",
+  "path": "./cards/king_of_hearts",
+  "value": 10,
+  "suit": "hearts"
+  },
+  {
+  "name": "king_of_spades",
+  "path": "./cards/king_of_spades",
+  "value": 10,
+  "suit": "spades"
+  }
+]
