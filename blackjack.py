@@ -32,11 +32,30 @@ class Blackjack:
         global player_hand_value, player_hand, dealer_turn
         if action == 'hit':
             self.player.add_card(self.deck.draw())
-
+            self.player_hand_value = self.calculate_hand_value(player_hand)
         elif action == 'stand':
             dealer_turn = True
             self.dealer_controls()
 
+    def calculate_hand_value(hand, self):
+        value = 0
+        ace_count = 0
+
+        for card in hand:
+            rank = card['rank']
+            if rank.isdigit():
+                value += int(rank)
+            elif rank in ['Jack', 'Queen', 'King']:
+                value += 10
+            elif rank == 'Ace':
+                ace_count += 1
+                value += 11
+
+        while value > 21 and ace_count:
+            value -= 10
+            ace_count -= 1
+
+        return value
 
     def dealer_controls(self):
         print("Hello world")
