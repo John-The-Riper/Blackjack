@@ -1,11 +1,18 @@
 import pygame
 import person
+import card
 class Blackjack:
+    player_hand_value = 0
+    dealer_hand_value =0
+    player_hand = []
+    dealer_hand = []
+    # Game functions
     def _init_(self, deck, player):
         self.perm_deck = deck
         self.deck = deck
         self.player = player
-
+        self.card = card
+        self.dealer = dealer
     def draw(self):
         if len(self.deck) > 0:
             return self.deck.pop()
@@ -28,38 +35,29 @@ class Blackjack:
                 temp.append(rstack[i])
             self.deck = temp
 
+    # PLaying the game
+
     def player_action(self, action):
         global player_hand_value, player_hand, dealer_turn
         if action == 'hit':
             self.player.add_card(self.deck.draw())
-            self.player_hand_value = self.calculate_hand_value(player_hand)
+            self.player_hand_value = self.card.get_value(player_hand)
         elif action == 'stand':
             dealer_turn = True
             self.dealer_controls()
 
-    def calculate_hand_value(hand, self):
-        value = 0
-        ace_count = 0
-
-        for card in hand:
-            rank = card['rank']
-            if rank.isdigit():
-                value += int(rank)
-            elif rank in ['Jack', 'Queen', 'King']:
-                value += 10
-            elif rank == 'Ace':
-                ace_count += 1
-                value += 11
-
-        while value > 21 and ace_count:
-            value -= 10
-            ace_count -= 1
-
-        return value
 
     def dealer_controls(self):
-        print("Hello world")
+        self.dealer.add_card(self.deck.draw())
+        self.dealer_hand_value = self.card.get_value(self.dealer_hand)
 
+
+# STARTING GAME - DEALING CARDS TO PLAYER AND DEALER AND GIVING PLAYER TURN
+    def starting_game(self):
+       self.player.add_card(self.deck.draw())
+       self.dealer.add_card(self.deck.draw())
+       self.player.add_card(self.deck.draw())
+       self.player_hand_value = self.card.get_value(self.player_hand)
 
     def run(self):
         running = True
@@ -91,5 +89,4 @@ class Blackjack:
             # Update the screen with the active surface
             pygame.display.flip()
             # Game FPS
-            clock.tick(30)
         self.player.add_cards(self.draw())
