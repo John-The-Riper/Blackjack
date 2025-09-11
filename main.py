@@ -44,24 +44,8 @@ def main():
     ##############################################
     # Game loop
     ##############################################
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
-                    running = False
-                elif event.key == pygame.K_1 and allow_press_1:
-                    player_action('hit')
-                elif event.key == pygame.K_2 and allow_press_2:
-                    player_action('stand')
-                    allow_press_1 = False
-                    allow_press_2 = False
+    run()
 
-        # Update the screen with the active surface
-        pygame.display.flip()
-        # Game FPS
-        clock.tick(30)
 
 
 

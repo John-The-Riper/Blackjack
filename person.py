@@ -27,7 +27,6 @@ class Person:
         self.money = money
         self.cards = []
         self.card_value = 0
-
     def add_card(self, card):
         self.cards.append(card)
         self.card_value += card.value
