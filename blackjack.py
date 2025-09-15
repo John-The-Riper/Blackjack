@@ -1,18 +1,15 @@
 import pygame
+import Dealer
 import person
 import card
 class Blackjack:
-    player_hand_value = 0
-    dealer_hand_value =0
-    player_hand = []
-    dealer_hand = []
     # Game functions
-    def _init_(self, deck, player):
+    def _init_(self, deck, player, dealer):
         self.perm_deck = deck
         self.deck = deck
         self.player = player
-        self.card = card
         self.dealer = dealer
+
     def draw(self):
         if len(self.deck) > 0:
             return self.deck.pop()
@@ -38,10 +35,9 @@ class Blackjack:
     # PLaying the game
 
     def player_action(self, action):
-        global player_hand_value, player_hand, dealer_turn
         if action == 'hit':
             self.player.add_card(self.deck.draw())
-            self.player_hand_value = self.card.get_value(player_hand)
+            self.player.get_value()
         elif action == 'stand':
             dealer_turn = True
             self.dealer_controls()
@@ -49,15 +45,14 @@ class Blackjack:
 
     def dealer_controls(self):
         self.dealer.add_card(self.deck.draw())
-        self.dealer_hand_value = self.card.get_value(self.dealer_hand)
-
 
 # STARTING GAME - DEALING CARDS TO PLAYER AND DEALER AND GIVING PLAYER TURN
     def starting_game(self):
        self.player.add_card(self.deck.draw())
        self.dealer.add_card(self.deck.draw())
        self.player.add_card(self.deck.draw())
-       self.player_hand_value = self.card.get_value(self.player_hand)
+       self.player_hand_value = self.card.get_value(self.player)
+       self.player.get_value()
 
     def run(self):
         running = True

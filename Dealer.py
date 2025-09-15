@@ -1,4 +1,4 @@
-class Person:
+class Dealer:
     def __init__(self, money):
         self.money = money
         self.cards = []
