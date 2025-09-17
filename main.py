@@ -34,6 +34,7 @@ def main():
     for entry in json_card_list:
         cards.append(Card(entry["name"], entry["path"], entry["value"], entry["suit"]))
 
+    print(len(cards))
     ##############################################
     # Game Setup
     ##############################################

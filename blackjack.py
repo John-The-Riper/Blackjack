@@ -1,4 +1,5 @@
 import pygame
+import random
 import person
 import card
 class Blackjack:
@@ -24,12 +25,15 @@ class Blackjack:
     def shuffle(self, n):
         for i in range(n):
             lstack = self.deck[0:len(self.deck) // 2]
-            rstack = self.deck[(len(self.deck) // 2) + 1:]
+            rstack = self.deck[(len(self.deck) // 2):]
             temp =[]
-            for j in range(len(lstack)):
-                temp.append(lstack[i])
-                temp.append(rstack[i])
+            for j in range(len(rstack)):
+                temp.append(lstack[j])
+                temp.append(rstack[j])
             self.deck = temp
+
+    def random_shuffle(self):
+        random.shuffle(self.deck)
 
     # PLaying the game
 
@@ -41,9 +45,9 @@ class Blackjack:
             dealer_turn = True
             self.dealer_controls()
 
-
     def dealer_controls(self):
         self.dealer.add_card(self.draw())
+
     def dealer_action(self, action):
         global running
         if action == 'hit':
@@ -52,24 +56,21 @@ class Blackjack:
             running = False
         return running
 
-    #def when_dealer_hit(self):
-        if self.player.card.value > self.dealer.card.value:
+    def when_dealer_hit(self):
+        if self.player.get_value > self.dealer.get_value():
             self.dealer_action('hit')
-        elif self.player.card.value == self.dealer.card.value and self.dealer.card.value <17:
+        elif self.player.get_value == self.dealer.get_value and self.dealer.get_value <17:
             self.dealer_action('hit')
         return self.dealer_stand is True
 
     # STARTING GAME - DEALING CARDS TO PLAYER AND DEALER AND GIVING PLAYER TURN
     def starting_game(self):
-       self.shuffle(4)
+       self.random_shuffle()
        self.player.add_card(self.draw())
        self.dealer.add_card(self.draw())
        self.player.add_card(self.draw())
        self.dealer.add_card(self.draw())
        print(self.player.get_value())
-       print(self.player.get_hand())
-       print(self.dealer.get_value())
-      # print(self.dealer.get_hand())
     def run(self):
         running = True
         allow_press_0 = True
@@ -100,4 +101,3 @@ class Blackjack:
             # Update the screen with the active surface
             pygame.display.flip()
             # Game FPS
-        self.player.add_cards(self.draw())

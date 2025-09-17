@@ -167,13 +167,36 @@
   "value": 8,
   "suit": "hearts"
   },
+    {
+  "name": "8_of_spades",
+  "path": "./cards/8_of_spades",
+  "value": 8,
+  "suit": "spades"
+  },
   {
+  "name": "9_of_clubs",
+  "path": "./cards/9_of_clubs",
+  "value": 9,
+  "suit": "clubs"
+  },
+  {
+  "name": "9_of_diamonds",
+  "path": "./cards/9_of_diamonds",
+  "value": 9,
+  "suit": "diamonds"
+  },
+    {
+  "name": "9_of_hearts",
+  "path": "./cards/9_of_hearts",
+  "value": 9,
+  "suit": "hearts"
+  },
+    {
   "name": "9_of_spades",
   "path": "./cards/9_of_spades",
   "value": 9,
   "suit": "spades"
   },
-
   {
     "name": "10_of_clubs",
     "path": "./cards/10_of_clubs",
