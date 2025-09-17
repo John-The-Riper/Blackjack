@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73321605-b413-4a71-8010-62325801568c" name="Changes" comment="initial push v2">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="73321605-b413-4a71-8010-62325801568c" name="Changes" comment="initial push">
       <change beforePath="$PROJECT_DIR$/blackjack.py" beforeDir="false" afterPath="$PROJECT_DIR$/blackjack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/card_setup.json" beforeDir="false" afterPath="$PROJECT_DIR$/card_setup.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +120,7 @@
       <workItem from="1757600159644" duration="2143000" />
       <workItem from="1757602325195" duration="7000" />
       <workItem from="1757943967040" duration="4707000" />
-      <workItem from="1758116721650" duration="4310000" />
+      <workItem from="1758116721650" duration="4632000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -285,7 +282,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758120050876</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="initial push">
+      <option name="closed" value="true" />
+      <created>1758121199899</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1758121199899</updated>
+    </task>
+    <task id="LOCAL-00022" summary="initial push">
+      <option name="closed" value="true" />
+      <created>1758121223831</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1758121223831</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,12 +318,12 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test" />
     <MESSAGE value="bob" />
-    <MESSAGE value="initial push" />
     <MESSAGE value="initial push v2" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial push v2" />
+    <MESSAGE value="initial push" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial push" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Blackjack$main.coverage" NAME="main Coverage Results" MODIFIED="1758121052534" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Blackjack$main.coverage" NAME="main Coverage Results" MODIFIED="1758121184882" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Blackjack$blackjack.coverage" NAME="blackjack Coverage Results" MODIFIED="1756911466234" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Blackjack$person.coverage" NAME="person Coverage Results" MODIFIED="1756910206620" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>

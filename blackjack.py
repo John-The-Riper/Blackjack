@@ -71,6 +71,7 @@ class Blackjack:
        self.player.add_card(self.draw())
        self.dealer.add_card(self.draw())
        print(self.player.get_value())
+
     def run(self):
         running = True
         allow_press_0 = True
