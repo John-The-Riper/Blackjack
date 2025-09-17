@@ -1,10 +1,9 @@
 import pygame
-import Dealer
 import person
 import card
 class Blackjack:
     # Game functions
-    def _init_(self, deck, player, dealer):
+    def __init__(self, deck, player, dealer):
         self.perm_deck = deck
         self.deck = deck
         self.player = player
@@ -51,9 +50,9 @@ class Blackjack:
        self.player.add_card(self.deck.draw())
        self.dealer.add_card(self.deck.draw())
        self.player.add_card(self.deck.draw())
-       self.player_hand_value = self.card.get_value(self.player)
-       self.player.get_value()
-
+       self.dealer.add_card(self.deck.draw())
+       print(self.player.get_value())
+       print(self.dealer.get_value())
     def run(self):
         running = True
         allow_press_0 = True

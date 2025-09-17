@@ -38,13 +38,14 @@ def main():
     # Game Setup
     ##############################################
     player = Person(100)
-    game = Blackjack(cards, player)
+    dealer = Person(100)
+    game = Blackjack(cards, player, dealer)
 
 
     ##############################################
     # Game loop
     ##############################################
-    run()
+    game.run()
 
 
 
