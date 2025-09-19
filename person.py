@@ -8,7 +8,7 @@ class Person:
         return self.cards
 
     def add_card(self, card):
-        print(card.get_name())
+       #print(card.get_name())
         self.cards.append(card)
         self.card_value += card.get_value()
 

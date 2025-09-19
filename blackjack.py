@@ -10,6 +10,7 @@ class Blackjack:
         self.player = player
         self.dealer = dealer
 
+
     def draw(self):
         if len(self.deck) > 0:
             return self.deck.pop()
@@ -40,29 +41,27 @@ class Blackjack:
     def player_action(self, action):
         if action == 'hit':
             self.player.add_card(self.draw())
-            self.player.get_value()
+            print(self.player.get_value())
         elif action == 'stand':
-            dealer_turn = True
-            self.dealer_controls()
+           self.when_dealer_hit()
 
-    def dealer_controls(self):
-        self.dealer.add_card(self.draw())
+    # Dealer functions
 
-    def dealer_action(self, action):
-        global running
-        if action == 'hit':
-            self.dealer.add_card(self.draw())
-        elif action == 'stand':
-            running = False
-        return running
+    def dealer_stand(self):
+        print("dealer stood")
+        print(self.dealer.get_value())
+
+
 
     def when_dealer_hit(self):
-        if self.player.get_value > self.dealer.get_value():
-            self.dealer_action('hit')
-        elif self.player.get_value == self.dealer.get_value and self.dealer.get_value <17:
-            self.dealer_action('hit')
-        return self.dealer_stand is True
-
+        while True:
+            if self.player.get_value() > self.dealer.get_value():
+                self.dealer.add_card(self.draw())
+            elif self.player.get_value() == self.dealer.get_value() and self.dealer.get_value() < 17:
+                self.dealer.add_card(self.draw())
+            else:
+                break
+            return self.dealer_stand()
     # STARTING GAME - DEALING CARDS TO PLAYER AND DEALER AND GIVING PLAYER TURN
     def starting_game(self):
        self.random_shuffle()
@@ -79,7 +78,6 @@ class Blackjack:
         allow_press_2 = False
         self.starting_game()
         while running:
-            global player_action
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
@@ -91,9 +89,9 @@ class Blackjack:
                         allow_press_2 = True
                         allow_press_0 = False
                     elif event.key == pygame.K_1 and allow_press_1:
-                        player_action('hit')
+                        self.player_action('hit')
                     elif event.key == pygame.K_2 and allow_press_2:
-                        player_action('stand')
+                        self.player_action('stand')
                         allow_press_1 = False
                         allow_press_2 = False
 
