@@ -43,7 +43,7 @@ class Blackjack:
             self.player.add_card(self.draw())
             print(self.player.get_value())
         elif action == 'stand':
-           self.when_dealer_hit()
+           self.dealer_turn()
 
     # Dealer functions
 
@@ -53,7 +53,7 @@ class Blackjack:
 
 
 
-    def when_dealer_hit(self):
+    def dealer_turn(self):
         while self.dealer.get_value() < 17:
             self.dealer.add_card(self.draw())
             print(self.dealer.get_value())
