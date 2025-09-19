@@ -54,14 +54,11 @@ class Blackjack:
 
 
     def when_dealer_hit(self):
-        while True:
-            if self.player.get_value() > self.dealer.get_value():
-                self.dealer.add_card(self.draw())
-            elif self.player.get_value() == self.dealer.get_value() and self.dealer.get_value() < 17:
-                self.dealer.add_card(self.draw())
-            else:
-                break
-            return self.dealer_stand()
+        while self.dealer.get_value() < 17:
+            self.dealer.add_card(self.draw())
+            print(self.dealer.get_value())
+        self.dealer_stand()
+
     # STARTING GAME - DEALING CARDS TO PLAYER AND DEALER AND GIVING PLAYER TURN
     def starting_game(self):
        self.random_shuffle()
