@@ -2,6 +2,7 @@ import pygame
 import random
 import person
 import card
+import random
 class Blackjack:
     # Game functions
     def __init__(self, deck, player, dealer):

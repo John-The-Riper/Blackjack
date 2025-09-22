@@ -1,3 +1,4 @@
+import random
 import pygame
 import json
 from card import Card
