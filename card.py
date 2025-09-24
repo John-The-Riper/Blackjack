@@ -7,8 +7,13 @@ class Card:
         self.path = path
 
         self.file = self.path + ".png"
+        self.original_img = pygame.image.load(self.file).convert_alpha()
 
-        self.img = pygame.image.load(self.file)
+        # Scale the card image to 20% of its original size
+        width = int(self.original_img.get_width() * 0.2)
+        height = int(self.original_img.get_height() * 0.2)
+        self.img = pygame.transform.smoothscale(self.original_img, (width, height))
+
         self.rect = self.img.get_rect(center=(500, 500))
 
         self.value = value

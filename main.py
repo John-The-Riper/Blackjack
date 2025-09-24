@@ -1,4 +1,3 @@
-import random
 import pygame
 import json
 from card import Card
@@ -17,7 +16,7 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE)
     clock = pygame.time.Clock()
     running = True
-    screen.fill((0, 0, 0))
+    screen.fill((0, 36, 26))
 
     ##############################################
     # Card object creation
@@ -41,7 +40,7 @@ def main():
     ##############################################
     player = Person(100)
     dealer = Person(100)
-    game = Blackjack(cards, player, dealer)
+    game = Blackjack(cards, player, dealer, screen)
 
 
     ##############################################
