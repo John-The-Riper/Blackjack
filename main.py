@@ -16,8 +16,6 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE)
     clock = pygame.time.Clock()
     running = True
-    screen.fill((0, 36, 26))
-
     ##############################################
     # Card object creation
     ##############################################

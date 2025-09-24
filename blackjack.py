@@ -2,6 +2,7 @@ import pygame
 import random
 import person
 import card
+
 class Blackjack:
     # Game functions
     def __init__(self, deck, player, dealer, screen):
@@ -17,10 +18,16 @@ class Blackjack:
         height = int(original_back.get_height() * 0.2)
         self.card_back_img = pygame.transform.smoothscale(original_back, (width, height))
 
+        # Fonts for text
+        self.font = pygame.font.SysFont(None, 30)      # smaller font for corner controls
+        self.large_font = pygame.font.SysFont(None, 50)  # larger font for controls screen
+
+        # Controls screen flag
+        self.show_controls_screen = True
+
     def draw(self):
         if len(self.deck) > 0:
             return self.deck.pop()
-
         else:
             self.reset()
             self.shuffle(2)
@@ -33,7 +40,7 @@ class Blackjack:
         for i in range(n):
             lstack = self.deck[0:len(self.deck) // 2]
             rstack = self.deck[(len(self.deck) // 2):]
-            temp =[]
+            temp = []
             for j in range(len(rstack)):
                 temp.append(lstack[j])
                 temp.append(rstack[j])
@@ -42,17 +49,15 @@ class Blackjack:
     def random_shuffle(self):
         random.shuffle(self.deck)
 
-    # PLaying the game
-
+    # Playing the game
     def player_action(self, action):
         if action == 'hit':
             self.player.add_card(self.draw())
             print(self.player.get_value())
         elif action == 'stand':
-           self.dealer_turn()
+            self.dealer_turn()
 
     # Dealer functions
-
     def dealer_stand(self):
         print("dealer stood")
         print(self.dealer.get_value())
@@ -63,7 +68,8 @@ class Blackjack:
             self.dealer.add_card(self.draw())
             print(self.dealer.get_value())
         self.dealer_stand()
- # Screen functions
+
+    # Screen functions
     def draw_hand(self, person, start_x, start_y, hide_second_card=False):
         card_spacing = 100
         for i, card in enumerate(person.get_hand()):
@@ -74,22 +80,47 @@ class Blackjack:
             else:
                 card.update(self.screen)
 
-# Starting game
+    def draw_controls_screen(self):
+        self.screen.fill((0, 0, 0))  # Black background
+
+        controls_text = [
+            "Controls:",
+            "Press 1 to Hit",
+            "Press 2 to Stand",
+            "Press ESC to Quit"
+        ]
+
+        for i, line in enumerate(controls_text):
+            text_surf = self.large_font.render(line, True, (255, 255, 255))
+            text_rect = text_surf.get_rect(center=(self.screen.get_width() // 2, 100 + i * 60))
+            self.screen.blit(text_surf, text_rect)
+
+        # "Press SPACE to continue" prompt at the bottom
+        prompt_text = "Press SPACE to continue"
+        prompt_surf = self.font.render(prompt_text, True, (255, 255, 255))
+        prompt_rect = prompt_surf.get_rect(center=(self.screen.get_width() // 2, self.screen.get_height() - 50))
+        self.screen.blit(prompt_surf, prompt_rect)
+
+    def draw_controls_corner(self):
+        controls_text = "1: Hit | 2: Stand | ESC: Quit"
+        text_surf = self.font.render(controls_text, True, (255, 255, 255))
+        text_rect = text_surf.get_rect(topright=(self.screen.get_width() - 10, 10))
+        self.screen.blit(text_surf, text_rect)
+
+    # Starting game
     def starting_game(self):
-       self.random_shuffle()
-       self.dealer_hidden = True
-       self.player.add_card(self.draw())
-       self.dealer.add_card(self.draw())
-       self.player.add_card(self.draw())
-       self.dealer.add_card(self.draw())
-       print(self.player.get_value())
+        self.random_shuffle()
+        self.dealer_hidden = True
+        self.player.add_card(self.draw())
+        self.dealer.add_card(self.draw())
+        self.player.add_card(self.draw())
+        self.dealer.add_card(self.draw())
+        print(self.player.get_value())
 
     def run(self):
         running = True
-        allow_press_0 = True
         allow_press_1 = False
         allow_press_2 = False
-        self.starting_game()
         while running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -97,19 +128,29 @@ class Blackjack:
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         running = False
-                    elif event.key == pygame.K_SPACE and allow_press_0:
-                        allow_press_1 = True
-                        allow_press_2 = True
-                        allow_press_0 = False
-                    elif event.key == pygame.K_1 and allow_press_1:
-                        self.player_action('hit')
-                    elif event.key == pygame.K_2 and allow_press_2:
-                        self.player_action('stand')
-                        allow_press_1 = False
-                        allow_press_2 = False
-            self.draw_hand(self.dealer, start_x=400, start_y=150, hide_second_card=self.dealer_hidden)
-            self.draw_hand(self.player, start_x=400, start_y=500)
 
-            # Update the screen with the active surface
+                    if self.show_controls_screen:
+                        if event.key == pygame.K_SPACE:
+                            self.show_controls_screen = False
+                            self.starting_game()
+                            allow_press_1 = True
+                            allow_press_2 = True
+                    else:
+                        if event.key == pygame.K_1 and allow_press_1:
+                            self.player_action('hit')
+                        elif event.key == pygame.K_2 and allow_press_2:
+                            self.player_action('stand')
+                            allow_press_1 = False
+                            allow_press_2 = False
+
+            if self.show_controls_screen:
+                self.draw_controls_screen()
+            else:
+                self.screen.fill((0, 36, 26))
+
+                self.draw_hand(self.dealer, start_x=400, start_y=150, hide_second_card=self.dealer_hidden)
+                self.draw_hand(self.player, start_x=400, start_y=500)
+
+                self.draw_controls_corner()
+
             pygame.display.flip()
-            # Game FPS
