@@ -1,6 +1,5 @@
 import pygame
 import random
-import bob
 import person
 import card
 
