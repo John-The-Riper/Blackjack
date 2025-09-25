@@ -1,5 +1,6 @@
 import pygame
 import random
+import time
 import person
 import card
 
@@ -94,8 +95,6 @@ class Blackjack:
             text_surf = self.large_font.render(line, True, (255, 255, 255))
             text_rect = text_surf.get_rect(center=(self.screen.get_width() // 2, 100 + i * 60))
             self.screen.blit(text_surf, text_rect)
-
-        # "Press SPACE to continue" prompt at the bottom
         prompt_text = "Press SPACE to continue"
         prompt_surf = self.font.render(prompt_text, True, (255, 255, 255))
         prompt_rect = prompt_surf.get_rect(center=(self.screen.get_width() // 2, self.screen.get_height() - 50))
@@ -105,6 +104,24 @@ class Blackjack:
         controls_text = "1: Hit | 2: Stand | ESC: Quit"
         text_surf = self.font.render(controls_text, True, (255, 255, 255))
         text_rect = text_surf.get_rect(topright=(self.screen.get_width() - 10, 10))
+        self.screen.blit(text_surf, text_rect)
+
+    def draw_player_value(self, x, y):
+        visible_cards = [card.get_value() for card in self.player.get_hand()]
+        value_text = f"Player Hand Value: {sum(visible_cards)}"
+        text_surf = self.font.render(value_text, True, (255, 255, 255))
+        text_rect = text_surf.get_rect(topleft=(x, y))
+        self.screen.blit(text_surf, text_rect)
+
+    def draw_dealer_value(self, x, y, hide_second_card=False):
+        visible_cards = []
+        for i, card in enumerate(self.dealer.get_hand()):
+            if hide_second_card and i == 1:
+                continue
+            visible_cards.append(card.get_value())
+        value_text = f"Dealer Hand Value: {sum(visible_cards)}"
+        text_surf = self.font.render(value_text, True, (255, 255, 255))
+        text_rect = text_surf.get_rect(topleft=(x, y))
         self.screen.blit(text_surf, text_rect)
 
     # Starting game
@@ -150,6 +167,8 @@ class Blackjack:
 
                 self.draw_hand(self.dealer, start_x=400, start_y=150, hide_second_card=self.dealer_hidden)
                 self.draw_hand(self.player, start_x=400, start_y=500)
+                self.draw_dealer_value(50, 150, hide_second_card=self.dealer_hidden)
+                self.draw_player_value(50, 500)
 
                 self.draw_controls_corner()
 
