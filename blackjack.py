@@ -1,6 +1,5 @@
 import pygame
 import random
-import time
 import person
 import card
 
@@ -8,23 +7,25 @@ class Blackjack:
     # Game functions
     def __init__(self, deck, player, dealer, screen):
         self.perm_deck = deck
-        self.deck = deck
+        self.deck = deck[:]
         self.player = player
         self.dealer = dealer
         self.screen = screen
 
-        # Load and scale card back image to 20%
         original_back = pygame.image.load('card_back.png').convert_alpha()
         width = int(original_back.get_width() * 0.2)
         height = int(original_back.get_height() * 0.2)
         self.card_back_img = pygame.transform.smoothscale(original_back, (width, height))
 
-        # Fonts for text
-        self.font = pygame.font.SysFont(None, 30)      # smaller font for corner controls
-        self.large_font = pygame.font.SysFont(None, 50)  # larger font for controls screen
-
-        # Controls screen flag
+        self.font = pygame.font.SysFont(None, 30)
+        self.large_font = pygame.font.SysFont(None, 50)
         self.show_controls_screen = True
+        self.allow_press_1 = False
+        self.allow_press_2 = False
+
+        self.dealer_hidden = True
+        self.round_over = False
+        self.round_result = ""
 
     def draw(self):
         if len(self.deck) > 0:
@@ -35,7 +36,7 @@ class Blackjack:
             return self.deck.pop()
 
     def reset(self):
-        self.deck = self.perm_deck
+        self.deck = self.perm_deck[:]
 
     def shuffle(self, n):
         for i in range(n):
@@ -54,20 +55,41 @@ class Blackjack:
     def player_action(self, action):
         if action == 'hit':
             self.player.add_card(self.draw())
-            print(self.player.get_value())
+            player_value = self.player.get_value()
+            print(player_value)  # optional debug print
+            if player_value > 21:
+                self.round_result = "Player busts! Dealer wins."
+                self.end_round()
         elif action == 'stand':
             self.dealer_turn()
 
+    def end_round(self):
+        self.allow_press_1 = False
+        self.allow_press_2 = False
+        self.round_over = True
+        self.dealer_hidden = False
+
     # Dealer functions
     def dealer_stand(self):
-        print("dealer stood")
-        print(self.dealer.get_value())
+        dealer_value = self.dealer.get_value()
+        player_value = self.player.get_value()
+
+        if dealer_value > 21:
+            self.round_result = "Dealer busts! Player wins."
+        elif dealer_value > player_value:
+            self.round_result = "Dealer wins."
+        elif dealer_value < player_value:
+            self.round_result = "Player wins."
+        else:
+            self.round_result = "It's a tie!"
+
+        self.end_round()
 
     def dealer_turn(self):
         self.dealer_hidden = False
         while self.dealer.get_value() < 17:
             self.dealer.add_card(self.draw())
-            print(self.dealer.get_value())
+            print(self.dealer.get_value())  # optional debug print
         self.dealer_stand()
 
     # Screen functions
@@ -83,14 +105,12 @@ class Blackjack:
 
     def draw_controls_screen(self):
         self.screen.fill((0, 0, 0))  # Black background
-
         controls_text = [
             "Controls:",
             "Press 1 to Hit",
             "Press 2 to Stand",
             "Press ESC to Quit"
         ]
-
         for i, line in enumerate(controls_text):
             text_surf = self.large_font.render(line, True, (255, 255, 255))
             text_rect = text_surf.get_rect(center=(self.screen.get_width() // 2, 100 + i * 60))
@@ -132,12 +152,12 @@ class Blackjack:
         self.dealer.add_card(self.draw())
         self.player.add_card(self.draw())
         self.dealer.add_card(self.draw())
-        print(self.player.get_value())
+        print(self.player.get_value())  # optional debug print
+        self.allow_press_1 = True
+        self.allow_press_2 = True
 
     def run(self):
         running = True
-        allow_press_1 = False
-        allow_press_2 = False
         while running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -150,15 +170,12 @@ class Blackjack:
                         if event.key == pygame.K_SPACE:
                             self.show_controls_screen = False
                             self.starting_game()
-                            allow_press_1 = True
-                            allow_press_2 = True
                     else:
-                        if event.key == pygame.K_1 and allow_press_1:
-                            self.player_action('hit')
-                        elif event.key == pygame.K_2 and allow_press_2:
-                            self.player_action('stand')
-                            allow_press_1 = False
-                            allow_press_2 = False
+                        if not self.round_over:
+                            if event.key == pygame.K_1 and self.allow_press_1:
+                                self.player_action('hit')
+                            elif event.key == pygame.K_2 and self.allow_press_2:
+                                self.player_action('stand')
 
             if self.show_controls_screen:
                 self.draw_controls_screen()
@@ -171,5 +188,16 @@ class Blackjack:
                 self.draw_player_value(50, 500)
 
                 self.draw_controls_corner()
+
+                # Draw the round result message if the round is over
+                if self.round_over:
+                    overlay = pygame.Surface((self.screen.get_width(), 100))
+                    overlay.set_alpha(180)
+                    overlay.fill((0, 0, 0))
+                    self.screen.blit(overlay, (0, self.screen.get_height() // 2 - 50))
+
+                    result_surf = self.large_font.render(self.round_result, True, (255, 255, 255))
+                    result_rect = result_surf.get_rect(center=(self.screen.get_width() // 2, self.screen.get_height() // 2))
+                    self.screen.blit(result_surf, result_rect)
 
             pygame.display.flip()
