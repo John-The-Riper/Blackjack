@@ -196,7 +196,7 @@ class Blackjack:
                     overlay.fill((0, 0, 0))
                     self.screen.blit(overlay, (0, self.screen.get_height() // 2 - 50))
 
-                    result_surf = self.large_font.render(self.round_result, True, (255, 255, 255))
+                    result_surf = self.large_font.render(self.round_result, True, (235, 235, 235))
                     result_rect = result_surf.get_rect(center=(self.screen.get_width() // 2, self.screen.get_height() // 2))
                     self.screen.blit(result_surf, result_rect)
 
