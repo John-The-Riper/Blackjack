@@ -55,9 +55,8 @@ class Blackjack:
     def player_action(self, action):
         if action == 'hit':
             self.player.add_card(self.draw())
-            player_value = self.player.get_value()
-            print(player_value)  # optional debug print
-            if player_value > 21:
+            print(self.player.get_value())  # optional debug print
+            if self.player.get_value() > 21:
                 self.round_result = "Player busts! Dealer wins."
                 self.end_round()
         elif action == 'stand':
@@ -71,14 +70,11 @@ class Blackjack:
 
     # Dealer functions
     def dealer_stand(self):
-        dealer_value = self.dealer.get_value()
-        player_value = self.player.get_value()
-
-        if dealer_value > 21:
+        if self.dealer.get_value() > 21:
             self.round_result = "Dealer busts! Player wins."
-        elif dealer_value > player_value:
+        elif self.dealer.get_value() > self.player.get_value():
             self.round_result = "Dealer wins."
-        elif dealer_value < player_value:
+        elif self.dealer.get_value() < self.player.get_value():
             self.round_result = "Player wins."
         else:
             self.round_result = "It's a tie!"
@@ -127,19 +123,19 @@ class Blackjack:
         self.screen.blit(text_surf, text_rect)
 
     def draw_player_value(self, x, y):
-        visible_cards = [card.get_value() for card in self.player.get_hand()]
-        value_text = f"Player Hand Value: {sum(visible_cards)}"
+        value_text = f"Player Hand Value: {self.player.get_value()}"
         text_surf = self.font.render(value_text, True, (255, 255, 255))
         text_rect = text_surf.get_rect(topleft=(x, y))
         self.screen.blit(text_surf, text_rect)
 
     def draw_dealer_value(self, x, y, hide_second_card=False):
-        visible_cards = []
-        for i, card in enumerate(self.dealer.get_hand()):
-            if hide_second_card and i == 1:
-                continue
-            visible_cards.append(card.get_value())
-        value_text = f"Dealer Hand Value: {sum(visible_cards)}"
+        if hide_second_card and len(self.dealer.get_hand()) > 1:
+            # Only show value of first card if second is hidden
+            first_card_value = self.dealer.get_hand()[0].get_value()
+            value_text = f"Dealer Hand Value: {first_card_value}"
+        else:
+            value_text = f"Dealer Hand Value: {self.dealer.get_value()}"
+
         text_surf = self.font.render(value_text, True, (255, 255, 255))
         text_rect = text_surf.get_rect(topleft=(x, y))
         self.screen.blit(text_surf, text_rect)
