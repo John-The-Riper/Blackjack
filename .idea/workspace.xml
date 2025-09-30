@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73321605-b413-4a71-8010-62325801568c" name="Changes" comment="working screen">
+    <list default="true" id="73321605-b413-4a71-8010-62325801568c" name="Changes" comment="working screen + controlls">
+      <change afterPath="$PROJECT_DIR$/stack.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blackjack.py" beforeDir="false" afterPath="$PROJECT_DIR$/blackjack.py" afterDir="false" />
     </list>
@@ -68,6 +69,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\owen106225\PycharmProjects\Blackjack" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\owen106225\PycharmProjects\Blackjack" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -125,7 +129,9 @@
       <workItem from="1758289638435" duration="5378000" />
       <workItem from="1758295583608" duration="518000" />
       <workItem from="1758543206944" duration="331000" />
-      <workItem from="1758721538691" duration="3456000" />
+      <workItem from="1758721538691" duration="3926000" />
+      <workItem from="1758894384057" duration="3124000" />
+      <workItem from="1759239952580" duration="388000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -375,7 +381,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758724456520</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="working screen + controlls">
+      <option name="closed" value="true" />
+      <created>1758725268304</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1758725268304</updated>
+    </task>
+    <task id="LOCAL-00033" summary="working screen + controlls">
+      <option name="closed" value="true" />
+      <created>1758725322422</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1758725322422</updated>
+    </task>
+    <task id="LOCAL-00034" summary="working screen + controlls">
+      <option name="closed" value="true" />
+      <created>1758725333977</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1758725333977</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -400,10 +430,11 @@
     <MESSAGE value="initial push" />
     <MESSAGE value="push" />
     <MESSAGE value="working screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="working screen" />
+    <MESSAGE value="working screen + controlls" />
+    <option name="LAST_COMMIT_MESSAGE" value="working screen + controlls" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Blackjack$main.coverage" NAME="main Coverage Results" MODIFIED="1758725017437" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Blackjack$main.coverage" NAME="main Coverage Results" MODIFIED="1759240071247" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Blackjack$blackjack.coverage" NAME="blackjack Coverage Results" MODIFIED="1756911466234" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Blackjack$person.coverage" NAME="person Coverage Results" MODIFIED="1756910206620" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
